@@ -38,6 +38,7 @@
     },
     "magma-stats": {
       "type": "magma-stats",
+      "disabled": true,
       "settings": {}
     },
     "magma-why": {
@@ -46,12 +47,14 @@
     },
     "magma-shop": {
       "type": "magma-shop",
+      "disabled": true,
       "settings": {
         "collection": ""
       }
     },
     "magma-testimonials": {
       "type": "magma-testimonials",
+      "disabled": true,
       "settings": {}
     },
     "magma-newsletter": {
