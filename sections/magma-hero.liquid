@@ -251,48 +251,8 @@
     animation: mhUp .5s ease 1.1s forwards;
   }
 
-  /* Scroll cue */
-  .mh__scroll {
-    position: absolute;
-    bottom: 32px;
-    left: 56px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    opacity: 0;
-    animation: mhUp .5s ease 1.3s forwards;
-  }
-
-  .mh__scroll-line {
-    width: 44px;
-    height: 1px;
-    background: rgba(255,255,255,.12);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .mh__scroll-line::after {
-    content: '';
-    position: absolute;
-    top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: #00C4B4;
-    animation: scrollSlide 2.2s ease-in-out infinite;
-  }
-
-  @keyframes scrollSlide {
-    0%   { left:-100%; }
-    50%  { left:0%; }
-    100% { left:100%; }
-  }
-
-  .mh__scroll-text {
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .22em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,.18);
-  }
+  /* Scroll cue — hidden */
+  .mh__scroll { display: none; }
 
   @keyframes mhUp {
     from { opacity:0; transform: translateY(14px); }
