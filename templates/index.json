@@ -20,7 +20,9 @@
     },
     "magma-hero": {
       "type": "magma-hero",
-      "settings": {}
+      "settings": {
+        "product_image": "shopify://shop_images/fvvrvar_un_titulo_4.png"
+      }
     },
     "magma-ticker": {
       "type": "magma-ticker",
