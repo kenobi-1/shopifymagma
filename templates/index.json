@@ -34,6 +34,7 @@
     },
     "magma-how-it-works": {
       "type": "magma-how-it-works",
+      "disabled": true,
       "settings": {}
     },
     "magma-stats": {
@@ -45,7 +46,8 @@
       "type": "magma-why",
       "settings": {
         "image_1": "shopify://shop_images/ComfyUI_00008.png",
-        "image_2": "shopify://shop_images/2bc9983dc2ee507c.webp"
+        "image_2": "shopify://shop_images/2bc9983dc2ee507c.webp",
+        "image_3": "shopify://shop_images/ffa79f4451143e15.webp"
       }
     },
     "magma-shop": {
@@ -62,6 +64,7 @@
     },
     "magma-newsletter": {
       "type": "magma-newsletter",
+      "disabled": true,
       "settings": {}
     },
     "magma-footer": {
