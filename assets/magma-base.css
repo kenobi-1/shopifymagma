@@ -19,6 +19,112 @@
   --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ============================================
+   DAWN HEADER OVERRIDE — MAGMA ENERGY BRAND
+   ============================================ */
+
+/* Force black bg on header */
+.header-wrapper,
+.shopify-section-group-header-group .color-scheme-1,
+.shopify-section-group-header-group .color-scheme-2,
+.shopify-section-group-header-group [class*="color-scheme"] {
+  background: #080808 !important;
+  border-bottom: 1px solid rgba(0, 196, 180, 0.15) !important;
+}
+
+/* Header text + links → white */
+.header,
+.header a,
+.header__heading-link,
+.header__menu-item,
+.header__icon,
+.header-menu__submenu .list-menu__item,
+.list-menu__item--link {
+  color: #ffffff !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+/* Hover → teal */
+.header__menu-item:hover,
+.header__menu-item:hover .header__menu-item-link,
+.list-menu__item--link:hover {
+  color: #00C4B4 !important;
+}
+
+/* Logo → Bebas Neue MAGMA ENERGY style */
+.header__heading-link,
+.header__heading {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 26px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+  font-weight: 400 !important;
+  color: #ffffff !important;
+}
+
+/* Cart + search + account icons → white */
+.header__icon svg,
+.header__icon path,
+.header__icon polyline,
+.header__icon rect,
+.header__icon circle,
+.header__icon line {
+  stroke: #ffffff !important;
+}
+
+.header__icon:hover svg path,
+.header__icon:hover svg polyline {
+  stroke: #00C4B4 !important;
+}
+
+/* Cart count badge → teal */
+.cart-count-bubble {
+  background: #00C4B4 !important;
+  color: #000 !important;
+}
+
+/* Mobile hamburger lines → white */
+.header__icon--menu .icon-hamburger path,
+.icon-hamburger path {
+  stroke: #ffffff !important;
+}
+
+/* Menu drawer → dark */
+menu-drawer,
+.drawer {
+  background: #080808 !important;
+  border-right: 1px solid rgba(0,196,180,0.15) !important;
+}
+
+.menu-drawer__navigation a,
+.menu-drawer__navigation .list-menu__item {
+  color: #ffffff !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 32px !important;
+  letter-spacing: 0.04em !important;
+  text-transform: uppercase !important;
+}
+
+.menu-drawer__navigation a:hover {
+  color: #00C4B4 !important;
+}
+
+/* Remove Dawn's divider line color */
+.header-wrapper.header-wrapper--border-bottom {
+  border-bottom: 1px solid rgba(0,196,180,0.15) !important;
+}
+
+/* Announcement bar override (hide Dawn's, ours is custom) */
+.shopify-section-group-header-group .announcement-bar {
+  display: none !important;
+}
+
+/* ============================================ */
+
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
