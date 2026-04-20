@@ -1,286 +1,271 @@
-{% comment %}MAGMA ENERGY — Why MAGMA / Features{% endcomment %}
+{% comment %}MAGMA ENERGY — Why MAGMA (full-bleed feature rows){% endcomment %}
 
 <style>
-  .magma-why {
-    background: var(--color-bg);
-    padding: 100px 0;
+  .mwhy {
+    background: #080808;
   }
 
-  .magma-why__header {
-    text-align: center;
-    margin-bottom: 80px;
+  .mwhy__header {
+    padding: clamp(60px,8vw,100px) clamp(24px,5vw,80px) clamp(40px,5vw,64px);
+    max-width: 1280px;
+    margin: 0 auto;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
-  .magma-why__feature {
+  .mwhy__header-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #00C4B4;
+    margin-bottom: 16px;
+  }
+
+  .mwhy__header-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 9vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  /* Full-bleed feature row */
+  .mwhy__row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 80px;
-    margin-bottom: 100px;
+    min-height: clamp(400px, 55vw, 620px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
   }
 
-  .magma-why__feature:last-child {
-    margin-bottom: 0;
-  }
+  .mwhy__row:last-child { border-bottom: none; }
 
-  .magma-why__feature--reverse {
-    direction: rtl;
-  }
+  .mwhy__row--flip .mwhy__visual { order: 2; }
+  .mwhy__row--flip .mwhy__copy   { order: 1; border-left: none; border-right: 1px solid rgba(255,255,255,0.06); }
 
-  .magma-why__feature--reverse > * {
-    direction: ltr;
-  }
-
-  .magma-why__visual {
-    position: relative;
-    aspect-ratio: 4/3;
-    background: var(--color-surface);
-    overflow: hidden;
-  }
-
-  .magma-why__visual-inner {
-    position: absolute;
-    inset: 0;
+  .mwhy__visual {
+    background: #111;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+    min-height: 340px;
   }
 
-  .magma-why__visual-placeholder {
+  .mwhy__visual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s ease;
+  }
+
+  .mwhy__row:hover .mwhy__visual-img {
+    transform: scale(1.03);
+  }
+
+  /* Placeholder visual */
+  .mwhy__visual-ph {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 16px;
     width: 100%;
     height: 100%;
+    padding: 48px;
   }
 
-  .magma-why__visual-icon {
-    width: 64px;
-    height: 64px;
-    color: var(--color-accent);
-    opacity: 0.6;
+  .mwhy__visual-ph-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(100px, 16vw, 220px);
+    line-height: 1;
+    color: rgba(0,196,180,0.08);
+    letter-spacing: -0.02em;
+    -webkit-text-stroke: 1px rgba(0,196,180,0.15);
   }
 
-  .magma-why__visual-label {
+  .mwhy__visual-ph-icon {
+    width: 56px;
+    height: 56px;
+    color: rgba(0,196,180,0.3);
+  }
+
+  .mwhy__visual-ph-hint {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--color-muted);
-  }
-
-  /* Decorative corner accent */
-  .magma-why__visual::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 80px;
-    height: 80px;
-    border-right: 2px solid var(--color-accent);
-    border-bottom: 2px solid var(--color-accent);
-    pointer-events: none;
-  }
-
-  .magma-why__visual-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    color: rgba(255,255,255,0.15);
   }
 
   /* Stat badge */
-  .magma-why__stat {
+  .mwhy__stat-badge {
     position: absolute;
     top: 24px;
     left: 24px;
-    background: var(--color-energy);
+    background: #F5D020;
     color: #000;
-    font-family: var(--font-headline);
-    font-size: 36px;
-    letter-spacing: 0.02em;
-    padding: 8px 16px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.04em;
+    padding: 6px 16px;
     line-height: 1;
-    z-index: 2;
   }
 
-  .magma-why__text {
+  /* Copy side */
+  .mwhy__copy {
+    padding: clamp(40px,6vw,80px) clamp(32px,5vw,72px);
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    justify-content: center;
+    gap: 24px;
+    border-left: 1px solid rgba(255,255,255,0.06);
   }
 
-  .magma-why__tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--color-accent);
+  .mwhy__copy-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.3em;
+    color: rgba(0,196,180,0.6);
   }
 
-  .magma-why__title {
-    font-family: var(--font-headline);
-    font-size: clamp(40px, 5vw, 64px);
+  .mwhy__copy-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(44px, 6vw, 80px);
     line-height: 0.95;
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
 
-  .magma-why__body {
-    font-size: 16px;
+  .mwhy__copy-body {
+    font-size: 15px;
     line-height: 1.75;
-    color: rgba(255, 255, 255, 0.62);
-    max-width: 440px;
+    color: rgba(255,255,255,0.5);
+    max-width: 420px;
   }
 
-  .magma-why__bullets {
+  .mwhy__copy-list {
+    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    list-style: none;
+    gap: 10px;
     margin-top: 4px;
   }
 
-  .magma-why__bullet {
+  .mwhy__copy-list li {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     gap: 12px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
-    color: rgba(255, 255, 255, 0.75);
+    letter-spacing: 0.04em;
+    color: rgba(255,255,255,0.6);
   }
 
-  .magma-why__bullet::before {
-    content: '→';
-    color: var(--color-accent);
+  .mwhy__copy-list li::before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 1px;
+    background: #00C4B4;
     flex-shrink: 0;
-    margin-top: 1px;
   }
 
-  @media (max-width: 900px) {
-    .magma-why {
-      padding: 60px 0;
-    }
-
-    .magma-why__feature {
+  @media (max-width: 768px) {
+    .mwhy__row {
       grid-template-columns: 1fr;
-      gap: 40px;
-      margin-bottom: 60px;
+      min-height: auto;
     }
-
-    .magma-why__feature--reverse {
-      direction: ltr;
-    }
+    .mwhy__row--flip .mwhy__visual { order: 1; }
+    .mwhy__row--flip .mwhy__copy   { order: 2; border-right: none; border-left: none; }
+    .mwhy__copy { border-left: none; }
+    .mwhy__visual { min-height: 280px; }
   }
 </style>
 
-<section class="magma-why" id="por-que">
-  <div class="magma-container">
-    <div class="magma-why__header">
-      <div class="magma-eyebrow magma-animate">Por Qué MAGMA</div>
-      <h2 class="magma-h2 magma-animate">ENERGÍA<br><span style="color: var(--color-accent)">INTELIGENTE</span></h2>
-    </div>
+<section class="mwhy" id="por-que">
+  <div class="mwhy__header">
+    <p class="mwhy__header-eyebrow magma-animate">Por Qué MAGMA</p>
+    <h2 class="mwhy__header-title magma-animate">
+      Tres razones<br>
+      <span style="color:#00C4B4">para activarte</span>
+    </h2>
+  </div>
 
-    <!-- Feature 1 -->
-    <div class="magma-why__feature magma-animate">
-      <div class="magma-why__visual">
-        <div class="magma-why__stat">100mg</div>
-        <div class="magma-why__visual-inner">
-          {%- if section.settings.image_1 != blank -%}
-            <img class="magma-why__visual-img" src="{{ section.settings.image_1 | image_url: width: 800 }}" alt="Cafeína Natural" loading="lazy">
-          {%- else -%}
-            <div class="magma-why__visual-placeholder">
-              <svg class="magma-why__visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-              </svg>
-              <span class="magma-why__visual-label">Agregar imagen del producto</span>
-            </div>
-          {%- endif -%}
+  <!-- Row 1: Energía Limpia -->
+  <div class="mwhy__row magma-animate">
+    <div class="mwhy__visual">
+      {%- if section.settings.image_1 != blank -%}
+        <img class="mwhy__visual-img" src="{{ section.settings.image_1 | image_url: width: 900 }}" alt="Energía Limpia" loading="lazy">
+      {%- else -%}
+        <div class="mwhy__visual-ph">
+          <div class="mwhy__visual-ph-num">01</div>
+          <svg class="mwhy__visual-ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span class="mwhy__visual-ph-hint">Agregar imagen</span>
         </div>
-      </div>
-
-      <div class="magma-why__text">
-        <div class="magma-why__tag">01 — Fórmula</div>
-        <h3 class="magma-why__title">ENERGÍA<br>LIMPIA</h3>
-        <p class="magma-why__body">
-          100mg de cafeína natural por bolsita. Sin el crash del café, sin los azúcares de las bebidas energéticas.
-          Energía que se mantiene.
-        </p>
-        <ul class="magma-why__bullets">
-          <li class="magma-why__bullet">Cafeína de fuente natural</li>
-          <li class="magma-why__bullet">Sin picos ni caídas bruscas</li>
-          <li class="magma-why__bullet">Vitaminas B6, B12, Niacina y Cromo</li>
-        </ul>
-      </div>
+      {%- endif -%}
+      <div class="mwhy__stat-badge">100mg</div>
     </div>
-
-    <!-- Feature 2 (reverse) -->
-    <div class="magma-why__feature magma-why__feature--reverse magma-animate">
-      <div class="magma-why__visual">
-        <div class="magma-why__visual-inner">
-          {%- if section.settings.image_2 != blank -%}
-            <img class="magma-why__visual-img" src="{{ section.settings.image_2 | image_url: width: 800 }}" alt="En cualquier lugar" loading="lazy">
-          {%- else -%}
-            <div class="magma-why__visual-placeholder">
-              <svg class="magma-why__visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span class="magma-why__visual-label">Agregar imagen de lifestyle</span>
-            </div>
-          {%- endif -%}
-        </div>
-      </div>
-
-      <div class="magma-why__text">
-        <div class="magma-why__tag">02 — Uso</div>
-        <h3 class="magma-why__title">EN CUALQUIER<br>LUGAR</h3>
-        <p class="magma-why__body">
-          Discreta, sin líquidos, sin vapor, sin olor. Una bolsita bajo el labio y listo.
-          Perfecta para el gym, la oficina, el estudio o el camino.
-        </p>
-        <ul class="magma-why__bullets">
-          <li class="magma-why__bullet">Sin agua ni preparación</li>
-          <li class="magma-why__bullet">100% discreta y sin olor</li>
-          <li class="magma-why__bullet">Lista en segundos</li>
-        </ul>
-      </div>
+    <div class="mwhy__copy">
+      <div class="mwhy__copy-num">01 — Fórmula</div>
+      <h3 class="mwhy__copy-title">Energía<br>Limpia</h3>
+      <p class="mwhy__copy-body">100mg de cafeína natural por bolsita. Sin el crash del café, sin los azúcares de las bebidas energéticas.</p>
+      <ul class="mwhy__copy-list">
+        <li>Cafeína de fuente natural</li>
+        <li>Sin picos ni caídas bruscas</li>
+        <li>Vitaminas B6, B12, Niacina y Cromo</li>
+      </ul>
     </div>
+  </div>
 
-    <!-- Feature 3 -->
-    <div class="magma-why__feature magma-animate">
-      <div class="magma-why__visual">
-        <div class="magma-why__visual-inner">
-          {%- if section.settings.image_3 != blank -%}
-            <img class="magma-why__visual-img" src="{{ section.settings.image_3 | image_url: width: 800 }}" alt="Suplemento Dietético" loading="lazy">
-          {%- else -%}
-            <div class="magma-why__visual-placeholder">
-              <svg class="magma-why__visual-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>
-              </svg>
-              <span class="magma-why__visual-label">Agregar imagen de fórmula</span>
-            </div>
-          {%- endif -%}
+  <!-- Row 2: En Cualquier Lugar (flip) -->
+  <div class="mwhy__row mwhy__row--flip magma-animate">
+    <div class="mwhy__visual">
+      {%- if section.settings.image_2 != blank -%}
+        <img class="mwhy__visual-img" src="{{ section.settings.image_2 | image_url: width: 900 }}" alt="En Cualquier Lugar" loading="lazy">
+      {%- else -%}
+        <div class="mwhy__visual-ph">
+          <div class="mwhy__visual-ph-num">02</div>
+          <svg class="mwhy__visual-ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span class="mwhy__visual-ph-hint">Agregar imagen</span>
         </div>
-      </div>
+      {%- endif -%}
+    </div>
+    <div class="mwhy__copy">
+      <div class="mwhy__copy-num">02 — Uso</div>
+      <h3 class="mwhy__copy-title">En Cualquier<br>Lugar</h3>
+      <p class="mwhy__copy-body">Discreta, sin líquidos, sin vapor, sin olor. Una bolsita bajo el labio y listo. Gym, oficina, estudio, viaje.</p>
+      <ul class="mwhy__copy-list">
+        <li>Sin agua ni preparación</li>
+        <li>100% discreta y sin olor</li>
+        <li>Lista en segundos</li>
+      </ul>
+    </div>
+  </div>
 
-      <div class="magma-why__text">
-        <div class="magma-why__tag">03 — Ingredientes</div>
-        <h3 class="magma-why__title">FÓRMULA<br>COMPLETA</h3>
-        <p class="magma-why__body">
-          No solo cafeína. MAGMA ENERGY incluye un stack de vitaminas B para potenciar tu rendimiento
-          cognitivo y físico al mismo tiempo.
-        </p>
-        <ul class="magma-why__bullets">
-          <li class="magma-why__bullet">Vitamina B6 — función nerviosa</li>
-          <li class="magma-why__bullet">Vitamina B12 — energía celular</li>
-          <li class="magma-why__bullet">Niacina + Cromo — metabolismo</li>
-        </ul>
-      </div>
+  <!-- Row 3: Fórmula Completa -->
+  <div class="mwhy__row magma-animate">
+    <div class="mwhy__visual">
+      {%- if section.settings.image_3 != blank -%}
+        <img class="mwhy__visual-img" src="{{ section.settings.image_3 | image_url: width: 900 }}" alt="Fórmula Completa" loading="lazy">
+      {%- else -%}
+        <div class="mwhy__visual-ph">
+          <div class="mwhy__visual-ph-num">03</div>
+          <svg class="mwhy__visual-ph-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+          <span class="mwhy__visual-ph-hint">Agregar imagen</span>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="mwhy__copy">
+      <div class="mwhy__copy-num">03 — Ingredientes</div>
+      <h3 class="mwhy__copy-title">Fórmula<br>Completa</h3>
+      <p class="mwhy__copy-body">No solo cafeína. MAGMA incluye un stack de vitaminas B para rendimiento cognitivo y físico simultáneo.</p>
+      <ul class="mwhy__copy-list">
+        <li>Vitamina B6 — función nerviosa</li>
+        <li>Vitamina B12 — energía celular</li>
+        <li>Niacina + Cromo — metabolismo</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -290,26 +275,10 @@
   "name": "MAGMA — Why MAGMA",
   "tag": "section",
   "settings": [
-    {
-      "type": "image_picker",
-      "id": "image_1",
-      "label": "Imagen Feature 1 (Energía Limpia)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_2",
-      "label": "Imagen Feature 2 (En Cualquier Lugar)"
-    },
-    {
-      "type": "image_picker",
-      "id": "image_3",
-      "label": "Imagen Feature 3 (Fórmula Completa)"
-    }
+    { "type": "image_picker", "id": "image_1", "label": "Imagen 1 — Energía Limpia" },
+    { "type": "image_picker", "id": "image_2", "label": "Imagen 2 — En Cualquier Lugar" },
+    { "type": "image_picker", "id": "image_3", "label": "Imagen 3 — Fórmula Completa" }
   ],
-  "presets": [
-    {
-      "name": "MAGMA — Why MAGMA"
-    }
-  ]
+  "presets": [{ "name": "MAGMA — Why MAGMA" }]
 }
 {% endschema %}

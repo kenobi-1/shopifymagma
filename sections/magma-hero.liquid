@@ -1,438 +1,352 @@
-{% comment %}MAGMA ENERGY — Hero Section{% endcomment %}
+{% comment %}MAGMA ENERGY — Hero (Editorial rebuild){% endcomment %}
 
 <style>
-  .magma-hero {
+  .mh {
     position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: var(--color-bg);
-    padding-top: 80px;
-  }
-
-  /* Background lightning pattern */
-  .magma-hero__bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-  }
-
-  .magma-hero__bg-glow {
-    position: absolute;
-    top: 20%;
-    right: 10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(0, 196, 180, 0.12) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  .magma-hero__bg-glow-2 {
-    position: absolute;
-    bottom: -10%;
-    left: -5%;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(245, 208, 32, 0.06) 0%, transparent 70%);
-    pointer-events: none;
-  }
-
-  /* Lightning bolt SVG decoratives */
-  .magma-hero__bolt {
-    position: absolute;
-    opacity: 0.08;
-  }
-
-  .magma-hero__bolt--1 {
-    top: 10%;
-    right: 5%;
-    width: 120px;
-    fill: var(--color-accent);
-    transform: rotate(15deg);
-  }
-
-  .magma-hero__bolt--2 {
-    bottom: 20%;
-    left: 3%;
-    width: 80px;
-    fill: var(--color-energy);
-    transform: rotate(-10deg);
-  }
-
-  .magma-hero__bolt--3 {
-    top: 60%;
-    right: 20%;
-    width: 60px;
-    fill: var(--color-accent);
-    transform: rotate(25deg);
-  }
-
-  /* Content */
-  .magma-hero__content {
-    position: relative;
-    z-index: 10;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: 60px;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 80px 40px;
-    width: 100%;
-  }
-
-  .magma-hero__text {
+    min-height: 100svh;
+    background: #080808;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    justify-content: flex-end;
+    overflow: hidden;
+    padding-top: 72px;
   }
 
-  .magma-hero__eyebrow {
+  /* Giant watermark text behind everything */
+  .mh__watermark {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+  }
+
+  .mh__watermark-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(200px, 30vw, 420px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(0, 196, 180, 0.1);
+    white-space: nowrap;
+    user-select: none;
+  }
+
+  /* Teal radial glow */
+  .mh__glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(0,196,180,0.10) 0%, transparent 65%);
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Product — absolute center */
+  .mh__product {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -52%);
+    z-index: 5;
+    animation: mhFloat 4s ease-in-out infinite;
+  }
+
+  @keyframes mhFloat {
+    0%,100% { transform: translate(-50%,-52%) translateY(0); }
+    50%      { transform: translate(-50%,-52%) translateY(-18px); }
+  }
+
+  .mh__product-img {
+    width: clamp(200px, 28vw, 380px);
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 40px 80px rgba(0,196,180,0.25));
+  }
+
+  /* Placeholder circle when no image */
+  .mh__product-placeholder {
+    width: clamp(220px, 26vw, 360px);
+    height: clamp(220px, 26vw, 360px);
+    border-radius: 50%;
+    background: #111;
+    border: 1px solid rgba(0,196,180,0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(0 40px 80px rgba(0,196,180,0.2));
+  }
+
+  .mh__product-placeholder b {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 0.9;
+    text-align: center;
+    color: #fff;
+  }
+
+  .mh__product-placeholder b span {
+    display: block;
+    color: #00C4B4;
+    font-size: 0.6em;
+    letter-spacing: 0.1em;
+  }
+
+  .mh__product-placeholder small {
+    margin-top: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #555;
+  }
+
+  .mh__mg-badge {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background: #F5D020;
+    color: #000;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.04em;
+    padding: 6px 14px;
+    line-height: 1;
+  }
+
+  /* Bottom content block */
+  .mh__bottom {
+    position: relative;
+    z-index: 10;
+    padding: 0 clamp(24px, 5vw, 80px) 56px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: flex-end;
+    gap: 40px;
+  }
+
+  .mh__headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(88px, 13vw, 200px);
+    line-height: 0.85;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .mh__headline .w1 {
+    display: block;
+    color: #fff;
+    clip-path: inset(0 100% 0 0);
+    animation: mhReveal 0.8s cubic-bezier(0.16,1,0.3,1) 0.15s forwards;
+  }
+
+  .mh__headline .w2 {
+    display: block;
+    color: #00C4B4;
+    clip-path: inset(0 100% 0 0);
+    animation: mhReveal 0.8s cubic-bezier(0.16,1,0.3,1) 0.35s forwards;
+  }
+
+  .mh__headline .w3 {
+    display: block;
+    color: #F5D020;
+    font-size: 0.42em;
+    letter-spacing: 0.08em;
+    clip-path: inset(0 100% 0 0);
+    animation: mhReveal 0.7s cubic-bezier(0.16,1,0.3,1) 0.52s forwards;
+  }
+
+  @keyframes mhReveal {
+    to { clip-path: inset(0 0% 0 0); }
+  }
+
+  .mh__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    padding-bottom: 6px;
+    opacity: 0;
+    animation: mhFadeUp 0.7s ease 0.8s forwards;
+  }
+
+  @keyframes mhFadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .mh__desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.5);
+    max-width: 260px;
+    text-align: right;
+  }
+
+  .mh__cta {
     display: inline-flex;
     align-items: center;
     gap: 10px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-accent);
-  }
-
-  .magma-hero__eyebrow::before {
-    content: '';
-    display: block;
-    width: 24px;
-    height: 2px;
-    background: var(--color-accent);
-  }
-
-  .magma-hero__headline {
-    font-family: var(--font-headline);
-    font-size: clamp(80px, 10vw, 160px);
-    line-height: 0.88;
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-  }
-
-  .magma-hero__headline .line-1 {
-    display: block;
-    color: var(--color-text);
-    opacity: 0;
-    transform: translateY(40px);
-    animation: heroLineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
-  }
-
-  .magma-hero__headline .line-2 {
-    display: block;
-    color: var(--color-accent);
-    opacity: 0;
-    transform: translateY(40px);
-    animation: heroLineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
-  }
-
-  .magma-hero__headline .line-3 {
-    display: block;
-    color: var(--color-energy);
-    font-size: clamp(40px, 5vw, 70px);
-    opacity: 0;
-    transform: translateY(40px);
-    animation: heroLineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards;
-  }
-
-  @keyframes heroLineIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .magma-hero__body {
-    font-size: 17px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.65);
-    max-width: 440px;
-    opacity: 0;
-    animation: heroLineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
-  }
-
-  .magma-hero__ctas {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    opacity: 0;
-    animation: heroLineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.85s forwards;
-  }
-
-  .magma-hero__badges {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 8px;
-    opacity: 0;
-    animation: heroLineIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
-  }
-
-  .magma-hero__badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    padding: 6px 12px;
-  }
-
-  .magma-hero__badge::before {
-    content: '✦';
-    color: var(--color-accent);
-    font-size: 8px;
-  }
-
-  /* Product image */
-  .magma-hero__product {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-
-  .magma-hero__product-wrap {
-    position: relative;
-    animation: heroFloat 3.5s ease-in-out infinite;
-    opacity: 0;
-    animation-delay: 0.6s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes heroFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-16px); }
-  }
-
-  /* Use keyframe that handles initial opacity */
-  .magma-hero__product-wrap {
-    animation: heroFloatIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards,
-               heroFloat 3.5s ease-in-out 1.4s infinite;
-  }
-
-  @keyframes heroFloatIn {
-    from { opacity: 0; transform: scale(0.92) translateY(20px); }
-    to   { opacity: 1; transform: scale(1) translateY(0); }
-  }
-
-  .magma-hero__product-glow {
-    position: absolute;
-    inset: -40px;
-    background: radial-gradient(circle, rgba(0, 196, 180, 0.18) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-  }
-
-  .magma-hero__product-img {
-    width: 100%;
-    max-width: 420px;
-    height: auto;
-    position: relative;
-    z-index: 2;
-  }
-
-  .magma-hero__product-placeholder {
-    width: 320px;
-    height: 320px;
-    border-radius: 50%;
-    background: var(--color-surface);
-    border: 2px solid rgba(0, 196, 180, 0.3);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    position: relative;
-    z-index: 2;
-  }
-
-  .magma-hero__product-placeholder .brand-name {
-    font-family: var(--font-headline);
-    font-size: 48px;
-    line-height: 0.9;
-    text-align: center;
-  }
-
-  .magma-hero__product-placeholder .brand-name span {
-    display: block;
-    color: var(--color-accent);
-    font-size: 32px;
-  }
-
-  .magma-hero__product-placeholder .product-detail {
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-muted);
-  }
-
-  .magma-hero__product-placeholder .product-mg {
-    background: var(--color-energy);
+    background: #00C4B4;
     color: #000;
     font-size: 13px;
     font-weight: 700;
-    padding: 4px 12px;
-    margin-top: 4px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.2s ease;
+    white-space: nowrap;
   }
 
-  /* Scroll indicator */
-  .magma-hero__scroll {
+  .mh__cta:hover {
+    background: #00e5d4;
+    transform: translateY(-2px);
+  }
+
+  /* Side label — rotated */
+  .mh__side-label {
     position: absolute;
-    bottom: 32px;
+    right: clamp(16px,3vw,48px);
+    top: 50%;
+    transform: translateY(-50%) rotate(90deg);
+    transform-origin: center;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+  }
+
+  /* Corner brackets */
+  .mh__corner {
+    position: absolute;
+    width: 32px;
+    height: 32px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  .mh__corner--tl { top: 88px; left: clamp(16px,3vw,48px); border-top: 1px solid rgba(0,196,180,0.4); border-left: 1px solid rgba(0,196,180,0.4); }
+  .mh__corner--tr { top: 88px; right: clamp(16px,3vw,48px); border-top: 1px solid rgba(0,196,180,0.4); border-right: 1px solid rgba(0,196,180,0.4); }
+
+  /* Scroll indicator */
+  .mh__scroll {
+    position: absolute;
+    bottom: 24px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    z-index: 10;
     opacity: 0;
-    animation: heroLineIn 0.7s ease 1.2s forwards;
+    animation: mhFadeUp 0.6s ease 1.1s forwards;
   }
 
-  .magma-hero__scroll span {
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--color-muted);
+  .mh__scroll-dot {
+    width: 4px;
+    height: 4px;
+    background: #00C4B4;
+    border-radius: 50%;
+    animation: mhScrollDot 1.4s ease-in-out infinite;
   }
 
-  .magma-hero__scroll-line {
+  .mh__scroll-line {
     width: 1px;
-    height: 40px;
-    background: linear-gradient(to bottom, var(--color-accent), transparent);
-    animation: scrollPulse 1.5s ease-in-out infinite;
+    height: 36px;
+    background: linear-gradient(to bottom, rgba(0,196,180,0.6), transparent);
   }
 
-  @keyframes scrollPulse {
-    0%, 100% { opacity: 0.4; transform: scaleY(0.6); transform-origin: top; }
-    50% { opacity: 1; transform: scaleY(1); }
+  @keyframes mhScrollDot {
+    0%,100% { opacity:0.3; }
+    50% { opacity:1; }
   }
 
-  /* Mobile */
-  @media (max-width: 900px) {
-    .magma-hero__content {
+  @media (max-width: 768px) {
+    .mh__bottom {
       grid-template-columns: 1fr;
-      text-align: center;
-      gap: 40px;
-      padding: 60px 20px 80px;
+      padding-bottom: 40px;
     }
-
-    .magma-hero__text {
-      align-items: center;
-      order: 2;
+    .mh__right {
+      align-items: flex-start;
     }
-
-    .magma-hero__product {
-      order: 1;
-    }
-
-    .magma-hero__body {
+    .mh__desc {
+      text-align: left;
       max-width: 100%;
     }
-
-    .magma-hero__ctas {
-      justify-content: center;
-    }
-
-    .magma-hero__badges {
-      justify-content: center;
-    }
-
-    .magma-hero__eyebrow {
-      justify-content: center;
-    }
-
-    .magma-hero__product-placeholder {
-      width: 240px;
-      height: 240px;
-    }
+    .mh__side-label { display: none; }
   }
 </style>
 
-<section class="magma-hero" id="inicio">
-  <!-- Background -->
-  <div class="magma-hero__bg">
-    <div class="magma-hero__bg-glow"></div>
-    <div class="magma-hero__bg-glow-2"></div>
-    <!-- Lightning bolt decoratives -->
-    <svg class="magma-hero__bolt magma-hero__bolt--1" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    <svg class="magma-hero__bolt magma-hero__bolt--2" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
-    <svg class="magma-hero__bolt magma-hero__bolt--3" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+<section class="mh" id="inicio">
+  <!-- Watermark -->
+  <div class="mh__watermark" aria-hidden="true">
+    <span class="mh__watermark-text">MAGMA</span>
   </div>
 
-  <div class="magma-hero__content">
-    <div class="magma-hero__text">
-      <div class="magma-hero__eyebrow">Suplemento Dietético — Made in Argentina</div>
+  <!-- Glow -->
+  <div class="mh__glow" aria-hidden="true"></div>
 
-      <h1 class="magma-hero__headline">
-        <span class="line-1">ENERGÍA</span>
-        <span class="line-2">SIN</span>
-        <span class="line-3">LÍMITES</span>
-      </h1>
+  <!-- Corner brackets -->
+  <div class="mh__corner mh__corner--tl" aria-hidden="true"></div>
+  <div class="mh__corner mh__corner--tr" aria-hidden="true"></div>
 
-      <p class="magma-hero__body">
-        100mg de cafeína natural en una bolsita discreta. Sin calorías. Sin azúcar. Sin nicotina.
-        La energía que necesitás, cuando la necesitás.
+  <!-- Side label -->
+  <div class="mh__side-label" aria-hidden="true">Menta · 100mg · 15 Bolsitas · Hecho en Argentina</div>
+
+  <!-- Product image -->
+  <div class="mh__product">
+    {%- if section.settings.product_image != blank -%}
+      <img
+        class="mh__product-img"
+        src="{{ section.settings.product_image | image_url: width: 800 }}"
+        alt="MAGMA ENERGY Pouches"
+        width="380"
+        loading="eager"
+      >
+    {%- else -%}
+      <div class="mh__product-placeholder">
+        <b>MAGMA<span>ENERGY</span></b>
+        <small>15 Pouches · Menta</small>
+        <div class="mh__mg-badge">100mg</div>
+      </div>
+    {%- endif -%}
+  </div>
+
+  <!-- Bottom text block -->
+  <div class="mh__bottom">
+    <h1 class="mh__headline" aria-label="Energía sin límites">
+      <span class="w1">ENERGÍA</span>
+      <span class="w2">SIN</span>
+      <span class="w3">LÍMITES ·</span>
+    </h1>
+
+    <div class="mh__right">
+      <p class="mh__desc">
+        100mg de cafeína natural. Sin calorías, sin azúcar, sin nicotina. La bolsita que te activa.
       </p>
-
-      <div class="magma-hero__ctas">
-        <a href="#comprar" class="magma-btn magma-btn--primary">
-          Comprar Ahora →
-        </a>
-        <a href="#beneficios" class="magma-btn magma-btn--ghost">
-          Ver Beneficios
-        </a>
-      </div>
-
-      <div class="magma-hero__badges">
-        <span class="magma-hero__badge">Sin Calorías</span>
-        <span class="magma-hero__badge">Sin Azúcar</span>
-        <span class="magma-hero__badge">Sin Nicotina</span>
-        <span class="magma-hero__badge">Cafeína Natural</span>
-      </div>
-    </div>
-
-    <div class="magma-hero__product">
-      <div class="magma-hero__product-wrap">
-        <div class="magma-hero__product-glow"></div>
-        {%- if section.settings.product_image != blank -%}
-          <img
-            class="magma-hero__product-img"
-            src="{{ section.settings.product_image | image_url: width: 800 }}"
-            alt="MAGMA ENERGY Pouches"
-            width="420"
-            loading="eager"
-          >
-        {%- else -%}
-          <div class="magma-hero__product-placeholder">
-            <div class="brand-name">
-              MAGMA
-              <span>ENERGY</span>
-            </div>
-            <div class="product-detail">15 Pouches · Menta</div>
-            <div class="product-mg">100mg Cafeína</div>
-          </div>
-        {%- endif -%}
-      </div>
+      <a href="#comprar" class="mh__cta">
+        Comprar Ahora →
+      </a>
     </div>
   </div>
 
-  <div class="magma-hero__scroll" aria-hidden="true">
-    <span>Scroll</span>
-    <div class="magma-hero__scroll-line"></div>
+  <!-- Scroll indicator -->
+  <div class="mh__scroll" aria-hidden="true">
+    <div class="mh__scroll-dot"></div>
+    <div class="mh__scroll-line"></div>
   </div>
 </section>
 
@@ -444,13 +358,9 @@
     {
       "type": "image_picker",
       "id": "product_image",
-      "label": "Imagen del producto (circular/lata)"
+      "label": "Imagen del producto"
     }
   ],
-  "presets": [
-    {
-      "name": "MAGMA — Hero"
-    }
-  ]
+  "presets": [{ "name": "MAGMA — Hero" }]
 }
 {% endschema %}

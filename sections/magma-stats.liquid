@@ -1,109 +1,133 @@
-{% comment %}MAGMA ENERGY — Stats Bar{% endcomment %}
+{% comment %}MAGMA ENERGY — Stats (2×2 massive numbers){% endcomment %}
 
 <style>
-  .magma-stats {
-    background: var(--color-surface);
-    border-top: 1px solid rgba(0, 196, 180, 0.25);
-    border-bottom: 1px solid rgba(0, 196, 180, 0.25);
-    padding: 72px 0;
+  .mstats {
+    background: #0d0d0d;
+    padding: 0;
   }
 
-  .magma-stats__grid {
+  .mstats__grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
+    grid-template-columns: 1fr 1fr;
   }
 
-  .magma-stats__item {
-    text-align: center;
-    padding: 40px 24px;
+  .mstats__cell {
+    padding: clamp(48px, 7vw, 96px) clamp(24px, 5vw, 72px);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
     position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease;
   }
 
-  .magma-stats__item + .magma-stats__item::before {
-    content: '';
+  .mstats__cell:nth-child(2n) { border-right: none; }
+  .mstats__cell:nth-child(3),
+  .mstats__cell:nth-child(4) { border-bottom: none; }
+
+  .mstats__cell:hover { background: rgba(0,196,180,0.03); }
+
+  /* Ghost label behind number */
+  .mstats__cell::before {
+    content: attr(data-label);
     position: absolute;
-    left: 0;
-    top: 20%;
-    height: 60%;
-    width: 1px;
-    background: rgba(255, 255, 255, 0.08);
+    bottom: -20px;
+    right: -10px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 10vw, 140px);
+    color: rgba(255,255,255,0.02);
+    pointer-events: none;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    user-select: none;
   }
 
-  .magma-stats__number {
-    font-family: var(--font-headline);
-    font-size: clamp(56px, 6vw, 88px);
-    line-height: 1;
-    letter-spacing: 0.02em;
-    color: var(--color-energy);
+  .mstats__val {
     display: flex;
     align-items: baseline;
-    justify-content: center;
-    gap: 4px;
+    gap: 6px;
+    line-height: 1;
   }
 
-  .magma-stats__unit {
-    font-family: var(--font-headline);
-    font-size: 0.5em;
-    color: var(--color-accent);
+  .mstats__num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(80px, 12vw, 160px);
+    letter-spacing: -0.01em;
+    color: #F5D020;
+    line-height: 1;
   }
 
-  .magma-stats__label {
-    font-size: 11px;
+  .mstats__unit {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 60px);
+    color: #00C4B4;
+    line-height: 1;
+  }
+
+  .mstats__label {
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--color-muted);
-    margin-top: 10px;
-    line-height: 1.5;
+    color: rgba(255,255,255,0.3);
+    margin-top: 4px;
   }
 
-  @media (max-width: 768px) {
-    .magma-stats {
-      padding: 48px 0;
-    }
+  .mstats__desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.2);
+    line-height: 1.5;
+    margin-top: 2px;
+  }
 
-    .magma-stats__grid {
-      grid-template-columns: repeat(2, 1fr);
+  @media (max-width: 480px) {
+    .mstats__grid {
+      grid-template-columns: 1fr;
     }
-
-    .magma-stats__item:nth-child(3)::before {
-      display: none;
+    .mstats__cell {
+      border-right: none;
     }
+    .mstats__cell:nth-child(3) { border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .mstats__cell:nth-child(4) { border-bottom: none; }
   }
 </style>
 
-<section class="magma-stats">
-  <div class="magma-container">
-    <div class="magma-stats__grid">
-      <div class="magma-stats__item magma-animate">
-        <div class="magma-stats__number">
-          <span class="magma-counter" data-target="100">0</span>
-          <span class="magma-stats__unit">mg</span>
-        </div>
-        <div class="magma-stats__label">Cafeína Natural<br>por Bolsita</div>
+<section class="mstats">
+  <div class="mstats__grid">
+    <div class="mstats__cell magma-animate" data-label="MG">
+      <div class="mstats__val">
+        <span class="mstats__num magma-counter" data-target="100">0</span>
+        <span class="mstats__unit">mg</span>
       </div>
+      <div class="mstats__label">Cafeína Natural</div>
+      <div class="mstats__desc">por bolsita</div>
+    </div>
 
-      <div class="magma-stats__item magma-animate">
-        <div class="magma-stats__number">
-          <span class="magma-counter" data-target="0">0</span>
-        </div>
-        <div class="magma-stats__label">Calorías<br>por Uso</div>
+    <div class="mstats__cell magma-animate" data-label="CERO">
+      <div class="mstats__val">
+        <span class="mstats__num magma-counter" data-target="0">0</span>
       </div>
+      <div class="mstats__label">Calorías</div>
+      <div class="mstats__desc">por uso</div>
+    </div>
 
-      <div class="magma-stats__item magma-animate">
-        <div class="magma-stats__number">
-          <span class="magma-counter" data-target="0">0</span>
-        </div>
-        <div class="magma-stats__label">Azúcares<br>por Uso</div>
+    <div class="mstats__cell magma-animate" data-label="CERO">
+      <div class="mstats__val">
+        <span class="mstats__num magma-counter" data-target="0">0</span>
       </div>
+      <div class="mstats__label">Azúcares</div>
+      <div class="mstats__desc">por uso</div>
+    </div>
 
-      <div class="magma-stats__item magma-animate">
-        <div class="magma-stats__number">
-          <span class="magma-counter" data-target="15">0</span>
-        </div>
-        <div class="magma-stats__label">Bolsitas<br>por Lata</div>
+    <div class="mstats__cell magma-animate" data-label="BOLSITAS">
+      <div class="mstats__val">
+        <span class="mstats__num magma-counter" data-target="15">0</span>
       </div>
+      <div class="mstats__label">Bolsitas</div>
+      <div class="mstats__desc">por lata</div>
     </div>
   </div>
 </section>
@@ -113,10 +137,6 @@
   "name": "MAGMA — Stats",
   "tag": "section",
   "settings": [],
-  "presets": [
-    {
-      "name": "MAGMA — Stats"
-    }
-  ]
+  "presets": [{ "name": "MAGMA — Stats" }]
 }
 {% endschema %}

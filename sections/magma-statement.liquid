@@ -1,0 +1,91 @@
+{% comment %}MAGMA ENERGY — Bold Statement Section{% endcomment %}
+
+<style>
+  .mstatement {
+    background: #00C4B4;
+    padding: clamp(60px, 10vw, 120px) clamp(24px, 5vw, 80px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Subtle texture: ghosted "MAGMA" behind */
+  .mstatement::before {
+    content: 'MAGMA';
+    position: absolute;
+    right: -40px;
+    bottom: -40px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(150px, 25vw, 340px);
+    line-height: 1;
+    color: rgba(0,0,0,0.07);
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.02em;
+  }
+
+  .mstatement__inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .mstatement__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .mstatement__label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: rgba(0,0,0,0.4);
+  }
+
+  .mstatement__text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(56px, 9vw, 140px);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: #000;
+  }
+
+  .mstatement__text em {
+    font-style: normal;
+    color: #fff;
+  }
+
+  @media (max-width: 600px) {
+    .mstatement__text {
+      line-height: 0.95;
+    }
+  }
+</style>
+
+<section class="mstatement magma-animate">
+  <div class="mstatement__inner">
+    <p class="mstatement__label">La diferencia MAGMA</p>
+    <p class="mstatement__text">
+      ENERGÍA REAL.<br>
+      <em>CERO</em> COMPROMISO.
+    </p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAGMA — Statement",
+  "tag": "section",
+  "settings": [],
+  "presets": [{ "name": "MAGMA — Statement" }]
+}
+{% endschema %}

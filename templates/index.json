@@ -18,6 +18,10 @@
       "type": "magma-ticker",
       "settings": {}
     },
+    "magma-statement": {
+      "type": "magma-statement",
+      "settings": {}
+    },
     "magma-how-it-works": {
       "type": "magma-how-it-works",
       "settings": {}
@@ -58,6 +62,7 @@
     "magma-nav",
     "magma-hero",
     "magma-ticker",
+    "magma-statement",
     "magma-how-it-works",
     "magma-stats",
     "magma-why",

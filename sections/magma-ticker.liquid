@@ -1,68 +1,70 @@
-{% comment %}MAGMA ENERGY — Benefits Ticker{% endcomment %}
+{% comment %}MAGMA ENERGY — Big Editorial Ticker{% endcomment %}
 
 <style>
-  .magma-ticker {
-    background: var(--color-surface);
-    border-top: 1px solid rgba(0, 196, 180, 0.2);
-    border-bottom: 1px solid rgba(0, 196, 180, 0.2);
-    padding: 18px 0;
+  .mticker {
+    background: #080808;
+    border-top: 1px solid rgba(0,196,180,0.15);
+    border-bottom: 1px solid rgba(0,196,180,0.15);
+    padding: 20px 0;
     overflow: hidden;
   }
 
-  .magma-ticker__track {
+  .mticker__track {
     display: flex;
     width: max-content;
-    animation: ticker 28s linear infinite;
+    animation: mtickerScroll 22s linear infinite;
   }
 
-  .magma-ticker__track:hover {
-    animation-play-state: paused;
-  }
+  .mticker__track:hover { animation-play-state: paused; }
 
-  @keyframes ticker {
+  @keyframes mtickerScroll {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
   }
 
-  .magma-ticker__group {
+  .mticker__group {
     display: flex;
     align-items: center;
   }
 
-  .magma-ticker__item {
+  .mticker__item {
     display: flex;
     align-items: center;
-    gap: 16px;
-    padding: 0 32px;
+    gap: 0;
     white-space: nowrap;
   }
 
-  .magma-ticker__text {
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--color-text);
+  .mticker__word {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 8vw, 96px);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    padding: 0 24px;
   }
 
-  .magma-ticker__sep {
-    color: var(--color-energy);
-    font-size: 10px;
+  .mticker__word--white { color: #ffffff; }
+  .mticker__word--teal  { color: #00C4B4; }
+
+  .mticker__sep {
+    color: #F5D020;
+    font-size: clamp(20px, 3vw, 36px);
+    line-height: 1;
+    flex-shrink: 0;
   }
 </style>
 
-{% assign items = '⚡ CAFEÍNA NATURAL|✦ SIN CALORÍAS|✦ SIN AZÚCAR|✦ SIN NICOTINA|✦ VITAMINAS B6 + B12|✦ HECHO EN ARGENTINA|✦ 100MG POR BOLSITA|✦ 15 POUCHES POR LATA' | split: '|' %}
+{% assign words = 'CAFEÍNA NATURAL,SIN CALORÍAS,SIN AZÚCAR,SIN NICOTINA,100MG,HECHO EN ARGENTINA,15 BOLSITAS,VITAMINAS B' | split: ',' %}
 
-<div class="magma-ticker" id="beneficios" aria-label="Beneficios de MAGMA ENERGY">
-  <div class="magma-ticker__track" aria-hidden="true">
-    <!-- Duplicated for seamless loop -->
+<div class="mticker" id="beneficios" aria-label="Beneficios MAGMA ENERGY">
+  <div class="mticker__track" aria-hidden="true">
     {% for i in (1..2) %}
-    <div class="magma-ticker__group">
-      {% for item in items %}
-      <div class="magma-ticker__item">
-        <span class="magma-ticker__text">{{ item }}</span>
-        <span class="magma-ticker__sep">◆</span>
-      </div>
+    <div class="mticker__group">
+      {% for word in words %}
+        {% assign mod = forloop.index | modulo: 2 %}
+        <div class="mticker__item">
+          <span class="mticker__word {% if mod == 0 %}mticker__word--teal{% else %}mticker__word--white{% endif %}">{{ word }}</span>
+          <span class="mticker__sep">✦</span>
+        </div>
       {% endfor %}
     </div>
     {% endfor %}
@@ -71,13 +73,9 @@
 
 {% schema %}
 {
-  "name": "MAGMA — Benefits Ticker",
+  "name": "MAGMA — Big Ticker",
   "tag": "section",
   "settings": [],
-  "presets": [
-    {
-      "name": "MAGMA — Benefits Ticker"
-    }
-  ]
+  "presets": [{ "name": "MAGMA — Big Ticker" }]
 }
 {% endschema %}

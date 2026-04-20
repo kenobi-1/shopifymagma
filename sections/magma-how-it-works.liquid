@@ -1,153 +1,141 @@
-{% comment %}MAGMA ENERGY — How It Works{% endcomment %}
+{% comment %}MAGMA ENERGY — How It Works (editorial numbered list){% endcomment %}
 
 <style>
-  .magma-how {
-    background: var(--color-bg);
-    padding: 100px 0;
+  .mhow {
+    background: #080808;
+    padding: clamp(60px,10vw,120px) clamp(24px,5vw,80px);
   }
 
-  .magma-how__header {
-    text-align: center;
-    margin-bottom: 72px;
+  .mhow__inner {
+    max-width: 1280px;
+    margin: 0 auto;
   }
 
-  .magma-how__grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
+  .mhow__head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 32px;
+    margin-bottom: 0;
+    flex-wrap: wrap;
+    gap: 16px;
   }
 
-  .magma-how__step {
-    background: var(--color-surface);
-    padding: 48px 40px 56px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s ease;
-  }
-
-  .magma-how__step:hover {
-    background: var(--color-surface-2);
-  }
-
-  .magma-how__step::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: var(--color-accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .magma-how__step:hover::before {
-    transform: scaleX(1);
-  }
-
-  .magma-how__number {
-    font-family: var(--font-headline);
-    font-size: 100px;
-    line-height: 1;
-    color: rgba(0, 196, 180, 0.12);
-    position: absolute;
-    top: 20px;
-    right: 24px;
-    letter-spacing: -0.02em;
-    pointer-events: none;
-    transition: color 0.3s ease;
-  }
-
-  .magma-how__step:hover .magma-how__number {
-    color: rgba(0, 196, 180, 0.2);
-  }
-
-  .magma-how__icon {
-    width: 48px;
-    height: 48px;
-    margin-bottom: 24px;
-    color: var(--color-accent);
-  }
-
-  .magma-how__title {
-    font-family: var(--font-headline);
-    font-size: 40px;
+  .mhow__head-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(40px,6vw,80px);
     letter-spacing: 0.02em;
     text-transform: uppercase;
-    margin-bottom: 16px;
     line-height: 1;
   }
 
-  .magma-how__body {
-    font-size: 15px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.6);
+  .mhow__head-sub {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
   }
 
-  @media (max-width: 768px) {
-    .magma-how {
-      padding: 60px 0;
-    }
+  .mhow__step {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.25s ease;
+    cursor: default;
+  }
 
-    .magma-how__grid {
-      grid-template-columns: 1fr;
-      gap: 2px;
-    }
+  .mhow__step:hover .mhow__num { color: #00C4B4; }
+  .mhow__step:hover .mhow__arrow { opacity: 1; color: #00C4B4; }
 
-    .magma-how__step {
-      padding: 40px 28px;
-    }
+  .mhow__num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(64px, 10vw, 130px);
+    line-height: 1;
+    color: rgba(255,255,255,0.07);
+    letter-spacing: -0.02em;
+    transition: color 0.25s ease;
+    min-width: 120px;
+    text-align: right;
+  }
 
-    .magma-how__number {
-      font-size: 70px;
+  .mhow__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .mhow__step-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 5vw, 64px);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+    color: #fff;
+  }
+
+  .mhow__step-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: rgba(255,255,255,0.45);
+    max-width: 480px;
+  }
+
+  .mhow__arrow {
+    font-size: 28px;
+    color: rgba(255,255,255,0.1);
+    transition: opacity 0.25s ease, color 0.25s ease;
+    opacity: 0;
+  }
+
+  @media (max-width: 640px) {
+    .mhow__step {
+      grid-template-columns: auto 1fr;
+    }
+    .mhow__arrow { display: none; }
+    .mhow__num {
+      font-size: 56px;
+      min-width: 60px;
     }
   }
 </style>
 
-<section class="magma-how magma-section">
-  <div class="magma-container">
-    <div class="magma-how__header">
-      <div class="magma-eyebrow magma-animate">Así Funciona</div>
-      <h2 class="magma-h2 magma-animate">SIMPLE.<br>EFECTIVO.</h2>
+<section class="mhow" id="como-funciona">
+  <div class="mhow__inner">
+    <div class="mhow__head">
+      <h2 class="mhow__head-title magma-animate">Cómo<br>Funciona</h2>
+      <span class="mhow__head-sub magma-animate">3 pasos · sin complicaciones</span>
     </div>
 
-    <div class="magma-how__grid">
-      <div class="magma-how__step magma-animate">
-        <span class="magma-how__number">01</span>
-        <svg class="magma-how__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-        </svg>
-        <h3 class="magma-how__title">Abrí la Lata</h3>
-        <p class="magma-how__body">
-          Cada lata contiene 15 bolsitas de MAGMA ENERGY. Diseño compacto para llevar a donde vayas.
-        </p>
+    <div class="mhow__step magma-animate">
+      <div class="mhow__num">01</div>
+      <div class="mhow__content">
+        <div class="mhow__step-title">Abrí la Lata</div>
+        <p class="mhow__step-body">15 bolsitas listas para usar. Compact, liviana, va a cualquier lado.</p>
       </div>
+      <div class="mhow__arrow">→</div>
+    </div>
 
-      <div class="magma-how__step magma-animate">
-        <span class="magma-how__number">02</span>
-        <svg class="magma-how__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <circle cx="12" cy="12" r="10"/>
-          <path d="M8 14s1.5 2 4 2 4-2 4-2"/>
-          <line x1="9" y1="9" x2="9.01" y2="9"/>
-          <line x1="15" y1="9" x2="15.01" y2="9"/>
-        </svg>
-        <h3 class="magma-how__title">Colocá la Bolsita</h3>
-        <p class="magma-how__body">
-          Colocá una bolsita entre tu labio y encía. Sin agua, sin vapor, sin ruido. Discreta y cómoda.
-        </p>
+    <div class="mhow__step magma-animate">
+      <div class="mhow__num">02</div>
+      <div class="mhow__content">
+        <div class="mhow__step-title">Colocá la Bolsita</div>
+        <p class="mhow__step-body">Entre el labio y la encía. Sin agua, sin vapor, sin olor. Discreta y cómoda al instante.</p>
       </div>
+      <div class="mhow__arrow">→</div>
+    </div>
 
-      <div class="magma-how__step magma-animate">
-        <span class="magma-how__number">03</span>
-        <svg class="magma-how__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-        </svg>
-        <h3 class="magma-how__title">Sentí la Energía</h3>
-        <p class="magma-how__body">
-          100mg de cafeína natural se liberan gradualmente. Energía limpia y sostenida por horas.
-        </p>
+    <div class="mhow__step magma-animate">
+      <div class="mhow__num">03</div>
+      <div class="mhow__content">
+        <div class="mhow__step-title">Sentí el Magma</div>
+        <p class="mhow__step-body">100mg de cafeína natural liberados en minutos. Energía limpia y sostenida, sin el crash.</p>
       </div>
+      <div class="mhow__arrow">→</div>
     </div>
   </div>
 </section>
@@ -157,10 +145,6 @@
   "name": "MAGMA — How It Works",
   "tag": "section",
   "settings": [],
-  "presets": [
-    {
-      "name": "MAGMA — How It Works"
-    }
-  ]
+  "presets": [{ "name": "MAGMA — How It Works" }]
 }
 {% endschema %}
