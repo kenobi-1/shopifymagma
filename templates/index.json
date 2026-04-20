@@ -63,6 +63,7 @@
     },
     "magma-footer": {
       "type": "magma-footer",
+      "disabled": true,
       "settings": {}
     }
   },
