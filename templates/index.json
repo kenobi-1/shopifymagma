@@ -43,7 +43,9 @@
     },
     "magma-why": {
       "type": "magma-why",
-      "settings": {}
+      "settings": {
+        "image_1": "shopify://shop_images/ComfyUI_00008.png"
+      }
     },
     "magma-shop": {
       "type": "magma-shop",
