@@ -66,7 +66,14 @@
   color: #fff !important;
 }
 
-/* Icons (search, account, cart) → white */
+/* Hide account icon */
+.header__icon--account,
+a[href*="/account"],
+.header__icon[href*="/account"] {
+  display: none !important;
+}
+
+/* Icons (search, cart) → white */
 .header__icon { color: #fff !important; }
 .header__icon svg * { stroke: #fff !important; fill: none !important; }
 .header__icon:hover svg * { stroke: #00C4B4 !important; }
