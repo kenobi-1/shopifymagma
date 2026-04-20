@@ -1,0 +1,313 @@
+{% comment %}MAGMA ENERGY — Product Grid{% endcomment %}
+
+<style>
+  .magma-shop {
+    background: var(--color-bg);
+    padding: 100px 0;
+  }
+
+  .magma-shop__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .magma-shop__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .magma-shop__card {
+    background: var(--color-surface);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .magma-shop__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 196, 180, 0.12);
+  }
+
+  .magma-shop__card-img-wrap {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: var(--color-surface-2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .magma-shop__card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .magma-shop__card:hover .magma-shop__card-img {
+    transform: scale(1.04);
+  }
+
+  .magma-shop__card-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+  }
+
+  .magma-shop__card-placeholder-logo {
+    font-family: var(--font-headline);
+    font-size: 48px;
+    line-height: 0.9;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  .magma-shop__badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--color-energy);
+    color: #000;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+  }
+
+  .magma-shop__card-body {
+    padding: 24px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+  }
+
+  .magma-shop__card-flavor {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .magma-shop__card-name {
+    font-family: var(--font-headline);
+    font-size: 32px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .magma-shop__card-detail {
+    font-size: 13px;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  .magma-shop__card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .magma-shop__card-price {
+    font-family: var(--font-headline);
+    font-size: 36px;
+    letter-spacing: 0.02em;
+    color: var(--color-text);
+  }
+
+  .magma-shop__card-price .currency {
+    font-size: 20px;
+    color: var(--color-muted);
+    margin-right: 2px;
+  }
+
+  .magma-shop__card-cta {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #000;
+    background: var(--color-accent);
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+    border: none;
+    cursor: pointer;
+  }
+
+  .magma-shop__card-cta:hover {
+    background: #00ddd0;
+  }
+
+  /* Coming soon card */
+  .magma-shop__card--coming {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .magma-shop__coming-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 12px 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  @media (max-width: 900px) {
+    .magma-shop {
+      padding: 60px 0;
+    }
+
+    .magma-shop__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .magma-shop__header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>
+
+<section class="magma-shop magma-section" id="comprar">
+  <div class="magma-container">
+    <div class="magma-shop__header">
+      <div>
+        <div class="magma-eyebrow magma-animate">Shop</div>
+        <h2 class="magma-h2 magma-animate">ELEGÍ TU<br><span style="color:var(--color-accent)">MAGMA</span></h2>
+      </div>
+      <a href="/collections/all" class="magma-btn magma-btn--ghost magma-animate">Ver Todo →</a>
+    </div>
+
+    <div class="magma-shop__grid">
+      {%- if section.settings.collection != blank -%}
+        {%- for product in section.settings.collection.products limit: 3 -%}
+          <div class="magma-shop__card magma-animate">
+            <div class="magma-shop__card-img-wrap">
+              {%- if product.featured_image -%}
+                <img
+                  class="magma-shop__card-img"
+                  src="{{ product.featured_image | image_url: width: 600 }}"
+                  alt="{{ product.title | escape }}"
+                  loading="lazy"
+                  width="600"
+                >
+              {%- else -%}
+                <div class="magma-shop__card-placeholder">
+                  <div class="magma-shop__card-placeholder-logo">MAGMA<br>ENERGY</div>
+                </div>
+              {%- endif -%}
+              <span class="magma-shop__badge">100mg</span>
+            </div>
+            <div class="magma-shop__card-body">
+              <div class="magma-shop__card-flavor">{{ product.type | default: 'Menta' }}</div>
+              <h3 class="magma-shop__card-name">{{ product.title }}</h3>
+              <p class="magma-shop__card-detail">15 bolsitas · Cafeína Natural · Sin Nicotina</p>
+              <div class="magma-shop__card-footer">
+                <div class="magma-shop__card-price">
+                  <span class="currency">$</span>{{ product.price | money_without_currency }}
+                </div>
+                <a href="{{ product.url }}" class="magma-shop__card-cta">
+                  Comprar →
+                </a>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <!-- Placeholder product card when no collection is set -->
+        <div class="magma-shop__card magma-animate">
+          <div class="magma-shop__card-img-wrap">
+            <div class="magma-shop__card-placeholder">
+              <div class="magma-shop__card-placeholder-logo">MAGMA<br>ENERGY</div>
+            </div>
+            <span class="magma-shop__badge">100mg</span>
+          </div>
+          <div class="magma-shop__card-body">
+            <div class="magma-shop__card-flavor">Menta</div>
+            <h3 class="magma-shop__card-name">MAGMA ENERGY</h3>
+            <p class="magma-shop__card-detail">15 bolsitas · Cafeína Natural · Sin Nicotina</p>
+            <div class="magma-shop__card-footer">
+              <div class="magma-shop__card-price"><span class="currency">$</span>—</div>
+              <a href="/collections/all" class="magma-shop__card-cta">Comprar →</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="magma-shop__card magma-shop__card--coming magma-animate">
+          <div class="magma-shop__card-img-wrap">
+            <div class="magma-shop__card-placeholder">
+              <div class="magma-shop__card-placeholder-logo">MAGMA<br>ENERGY</div>
+            </div>
+          </div>
+          <div class="magma-shop__card-body">
+            <div class="magma-shop__card-flavor">Próximamente</div>
+            <h3 class="magma-shop__card-name">Nuevo Sabor</h3>
+            <p class="magma-shop__card-detail">Más sabores en camino</p>
+            <div class="magma-shop__card-footer">
+              <div class="magma-shop__card-price">—</div>
+              <span class="magma-shop__coming-label">Próximamente</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="magma-shop__card magma-shop__card--coming magma-animate">
+          <div class="magma-shop__card-img-wrap">
+            <div class="magma-shop__card-placeholder">
+              <div class="magma-shop__card-placeholder-logo">MAGMA<br>ENERGY</div>
+            </div>
+          </div>
+          <div class="magma-shop__card-body">
+            <div class="magma-shop__card-flavor">Próximamente</div>
+            <h3 class="magma-shop__card-name">Nuevo Sabor</h3>
+            <p class="magma-shop__card-detail">Más sabores en camino</p>
+            <div class="magma-shop__card-footer">
+              <div class="magma-shop__card-price">—</div>
+              <span class="magma-shop__coming-label">Próximamente</span>
+            </div>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAGMA — Shop",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Colección de productos"
+    }
+  ],
+  "presets": [
+    {
+      "name": "MAGMA — Shop"
+    }
+  ]
+}
+{% endschema %}

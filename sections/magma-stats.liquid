@@ -1,0 +1,122 @@
+{% comment %}MAGMA ENERGY — Stats Bar{% endcomment %}
+
+<style>
+  .magma-stats {
+    background: var(--color-surface);
+    border-top: 1px solid rgba(0, 196, 180, 0.25);
+    border-bottom: 1px solid rgba(0, 196, 180, 0.25);
+    padding: 72px 0;
+  }
+
+  .magma-stats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .magma-stats__item {
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+  }
+
+  .magma-stats__item + .magma-stats__item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .magma-stats__number {
+    font-family: var(--font-headline);
+    font-size: clamp(56px, 6vw, 88px);
+    line-height: 1;
+    letter-spacing: 0.02em;
+    color: var(--color-energy);
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  .magma-stats__unit {
+    font-family: var(--font-headline);
+    font-size: 0.5em;
+    color: var(--color-accent);
+  }
+
+  .magma-stats__label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    margin-top: 10px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    .magma-stats {
+      padding: 48px 0;
+    }
+
+    .magma-stats__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .magma-stats__item:nth-child(3)::before {
+      display: none;
+    }
+  }
+</style>
+
+<section class="magma-stats">
+  <div class="magma-container">
+    <div class="magma-stats__grid">
+      <div class="magma-stats__item magma-animate">
+        <div class="magma-stats__number">
+          <span class="magma-counter" data-target="100">0</span>
+          <span class="magma-stats__unit">mg</span>
+        </div>
+        <div class="magma-stats__label">Cafeína Natural<br>por Bolsita</div>
+      </div>
+
+      <div class="magma-stats__item magma-animate">
+        <div class="magma-stats__number">
+          <span class="magma-counter" data-target="0">0</span>
+        </div>
+        <div class="magma-stats__label">Calorías<br>por Uso</div>
+      </div>
+
+      <div class="magma-stats__item magma-animate">
+        <div class="magma-stats__number">
+          <span class="magma-counter" data-target="0">0</span>
+        </div>
+        <div class="magma-stats__label">Azúcares<br>por Uso</div>
+      </div>
+
+      <div class="magma-stats__item magma-animate">
+        <div class="magma-stats__number">
+          <span class="magma-counter" data-target="15">0</span>
+        </div>
+        <div class="magma-stats__label">Bolsitas<br>por Lata</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAGMA — Stats",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "MAGMA — Stats"
+    }
+  ]
+}
+{% endschema %}

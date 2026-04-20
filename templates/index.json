@@ -1,0 +1,69 @@
+{
+  "sections": {
+    "magma-announcement": {
+      "type": "magma-announcement",
+      "settings": {}
+    },
+    "magma-nav": {
+      "type": "magma-nav",
+      "settings": {}
+    },
+    "magma-hero": {
+      "type": "magma-hero",
+      "settings": {
+        "product_image": null
+      }
+    },
+    "magma-ticker": {
+      "type": "magma-ticker",
+      "settings": {}
+    },
+    "magma-how-it-works": {
+      "type": "magma-how-it-works",
+      "settings": {}
+    },
+    "magma-stats": {
+      "type": "magma-stats",
+      "settings": {}
+    },
+    "magma-why": {
+      "type": "magma-why",
+      "settings": {
+        "image_1": null,
+        "image_2": null,
+        "image_3": null
+      }
+    },
+    "magma-shop": {
+      "type": "magma-shop",
+      "settings": {
+        "collection": null
+      }
+    },
+    "magma-testimonials": {
+      "type": "magma-testimonials",
+      "settings": {}
+    },
+    "magma-newsletter": {
+      "type": "magma-newsletter",
+      "settings": {}
+    },
+    "magma-footer": {
+      "type": "magma-footer",
+      "settings": {}
+    }
+  },
+  "order": [
+    "magma-announcement",
+    "magma-nav",
+    "magma-hero",
+    "magma-ticker",
+    "magma-how-it-works",
+    "magma-stats",
+    "magma-why",
+    "magma-shop",
+    "magma-testimonials",
+    "magma-newsletter",
+    "magma-footer"
+  ]
+}

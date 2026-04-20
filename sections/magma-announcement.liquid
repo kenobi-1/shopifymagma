@@ -1,0 +1,53 @@
+{% comment %}MAGMA ENERGY — Announcement Bar{% endcomment %}
+
+<style>
+  .magma-announcement {
+    background: var(--color-surface);
+    border-bottom: 1px solid rgba(0, 196, 180, 0.2);
+    padding: 10px 0;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+  }
+
+  .magma-announcement__inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 20px;
+  }
+
+  .magma-announcement__message {
+    position: absolute;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    white-space: nowrap;
+  }
+
+  .magma-announcement__message.is-active {
+    opacity: 1;
+  }
+</style>
+
+<div class="magma-announcement">
+  <div class="magma-announcement__inner">
+    <span class="magma-announcement__message">⚡ 100mg Cafeína Natural por Bolsita</span>
+    <span class="magma-announcement__message">✦ Sin Calorías · Sin Azúcar · Sin Nicotina</span>
+    <span class="magma-announcement__message">🇦🇷 Hecho en Argentina — Suplemento Dietético</span>
+    <span class="magma-announcement__message">🔥 Vitaminas B6, B12, Niacina y Cromo</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "MAGMA — Announcement Bar",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

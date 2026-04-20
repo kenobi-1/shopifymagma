@@ -1,0 +1,174 @@
+{% comment %}MAGMA ENERGY — Testimonials{% endcomment %}
+
+<style>
+  .magma-testi {
+    background: var(--color-surface);
+    padding: 100px 0;
+    overflow: hidden;
+  }
+
+  .magma-testi__header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .magma-testi__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .magma-testi__card {
+    background: var(--color-bg);
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: background 0.3s ease;
+  }
+
+  .magma-testi__card:hover {
+    background: var(--color-surface-2);
+  }
+
+  .magma-testi__stars {
+    display: flex;
+    gap: 4px;
+    color: var(--color-energy);
+    font-size: 16px;
+  }
+
+  .magma-testi__quote {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    flex: 1;
+    font-style: italic;
+  }
+
+  .magma-testi__quote::before {
+    content: '"';
+    font-family: var(--font-headline);
+    font-size: 48px;
+    line-height: 0;
+    color: var(--color-accent);
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 8px;
+    font-style: normal;
+  }
+
+  .magma-testi__author {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .magma-testi__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--color-surface-2);
+    border: 1px solid rgba(0, 196, 180, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-headline);
+    font-size: 18px;
+    color: var(--color-accent);
+    flex-shrink: 0;
+  }
+
+  .magma-testi__name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text);
+    letter-spacing: 0.04em;
+  }
+
+  .magma-testi__role {
+    font-size: 11px;
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 768px) {
+    .magma-testi {
+      padding: 60px 0;
+    }
+
+    .magma-testi__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<section class="magma-testi">
+  <div class="magma-container">
+    <div class="magma-testi__header">
+      <div class="magma-eyebrow magma-animate">Lo Que Dicen</div>
+      <h2 class="magma-h2 magma-animate">RESULTADOS<br><span style="color:var(--color-accent)">REALES</span></h2>
+    </div>
+
+    <div class="magma-testi__grid">
+      <div class="magma-testi__card magma-animate">
+        <div class="magma-testi__stars">★★★★★</div>
+        <p class="magma-testi__quote">
+          Lo uso antes del gym y la diferencia es brutal. Energía limpia, sin el nerviosismo que me da el café.
+        </p>
+        <div class="magma-testi__author">
+          <div class="magma-testi__avatar">M</div>
+          <div>
+            <div class="magma-testi__name">Matías R.</div>
+            <div class="magma-testi__role">Atleta · Buenos Aires</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="magma-testi__card magma-animate">
+        <div class="magma-testi__stars">★★★★★</div>
+        <p class="magma-testi__quote">
+          Perfecto para estudiar. No tengo que interrumpir nada, lo pongo y me concentro. Sin calorías encima.
+        </p>
+        <div class="magma-testi__author">
+          <div class="magma-testi__avatar">V</div>
+          <div>
+            <div class="magma-testi__name">Valentina G.</div>
+            <div class="magma-testi__role">Estudiante universitaria</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="magma-testi__card magma-animate">
+        <div class="magma-testi__stars">★★★★★</div>
+        <p class="magma-testi__quote">
+          Me lo llevé de viaje y fue un game changer. No ocupa lugar, no se derrama y funciona igual que siempre.
+        </p>
+        <div class="magma-testi__author">
+          <div class="magma-testi__avatar">S</div>
+          <div>
+            <div class="magma-testi__name">Santiago L.</div>
+            <div class="magma-testi__role">Emprendedor · Córdoba</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAGMA — Testimonials",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "MAGMA — Testimonials"
+    }
+  ]
+}
+{% endschema %}

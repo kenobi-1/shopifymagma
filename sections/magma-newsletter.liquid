@@ -1,0 +1,172 @@
+{% comment %}MAGMA ENERGY — Newsletter / Email Capture{% endcomment %}
+
+<style>
+  .magma-nl {
+    background: var(--color-bg);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .magma-nl::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(0, 196, 180, 0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .magma-nl::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(245, 208, 32, 0.05) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .magma-nl__inner {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  .magma-nl__title {
+    margin-bottom: 16px;
+  }
+
+  .magma-nl__body {
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 40px;
+  }
+
+  .magma-nl__form {
+    display: flex;
+    gap: 0;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .magma-nl__input {
+    flex: 1;
+    background: var(--color-surface);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 16px 20px;
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .magma-nl__input::placeholder {
+    color: var(--color-muted);
+  }
+
+  .magma-nl__input:focus {
+    border-color: var(--color-accent);
+  }
+
+  .magma-nl__submit {
+    background: var(--color-accent);
+    color: #000;
+    border: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 28px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    white-space: nowrap;
+  }
+
+  .magma-nl__submit:hover {
+    background: #00ddd0;
+  }
+
+  .magma-nl__disclaimer {
+    font-size: 11px;
+    color: var(--color-muted);
+    margin-top: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 600px) {
+    .magma-nl {
+      padding: 60px 0;
+    }
+
+    .magma-nl__form {
+      flex-direction: column;
+    }
+
+    .magma-nl__input {
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      border-bottom: none;
+    }
+
+    .magma-nl__input:focus {
+      border-color: var(--color-accent);
+    }
+
+    .magma-nl__submit {
+      padding: 16px;
+    }
+  }
+</style>
+
+<section class="magma-nl">
+  <div class="magma-container">
+    <div class="magma-nl__inner">
+      <div class="magma-eyebrow magma-animate">Mantente al Día</div>
+      <h2 class="magma-h2 magma-nl__title magma-animate">SÉ EL PRIMERO<br><span style="color:var(--color-accent)">EN SABER</span></h2>
+      <p class="magma-nl__body magma-animate">
+        Nuevos sabores, lanzamientos exclusivos y ofertas antes que nadie.
+        Sin spam, solo MAGMA.
+      </p>
+
+      {%- form 'customer', class: 'magma-nl__form magma-animate' -%}
+        <input type="hidden" name="contact[tags]" value="newsletter">
+        <input
+          class="magma-nl__input"
+          type="email"
+          name="contact[email]"
+          placeholder="tu@email.com"
+          required
+          autocomplete="email"
+          aria-label="Tu email"
+        >
+        <button class="magma-nl__submit" type="submit">
+          Suscribirme →
+        </button>
+      {%- endform -%}
+
+      <p class="magma-nl__disclaimer">Sin spam. Podés darte de baja cuando quieras.</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "MAGMA — Newsletter",
+  "tag": "section",
+  "settings": [],
+  "presets": [
+    {
+      "name": "MAGMA — Newsletter"
+    }
+  ]
+}
+{% endschema %}
