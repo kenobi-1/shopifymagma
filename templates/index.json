@@ -11,6 +11,7 @@
   "sections": {
     "magma-announcement": {
       "type": "magma-announcement",
+      "disabled": true,
       "settings": {}
     },
     "magma-nav": {
@@ -24,9 +25,15 @@
         "product_image": "shopify://shop_images/fvvrvar_un_titulo_4.png"
       }
     },
-    "magma-ticker": {
-      "type": "magma-ticker",
-      "settings": {}
+    "custom_liquid_TwXX3H": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "<style>\n  .ticker-section {\n    background: #ffffff;\n    padding: 40px 0;\n    border-top: 1px solid #e8e8e8;\n    border-bottom: 1px solid #e8e8e8;\n    overflow: hidden;\n    display: flex;\n    align-items: center;\n  }\n\n  .ticker-label {\n    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;\n    font-size: 13px;\n    font-weight: 700;\n    letter-spacing: 0.1em;\n    text-transform: uppercase;\n    color: #0a0a0a;\n    white-space: nowrap;\n    padding: 0 48px 0 40px;\n    flex-shrink: 0;\n    position: relative;\n    z-index: 2;\n  }\n\n  .ticker-label::after {\n    content: '';\n    position: absolute;\n    right: 0;\n    top: 50%;\n    transform: translateY(-50%);\n    width: 1px;\n    height: 40px;\n    background: #d0d0d0;\n  }\n\n  .ticker-track-wrapper {\n    overflow: hidden;\n    flex: 1;\n    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);\n    -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);\n  }\n\n  .ticker-track {\n    display: flex;\n    align-items: center;\n    gap: 80px;\n    animation: ticker-scroll 28s linear infinite;\n    width: max-content;\n  }\n\n  .ticker-track:hover {\n    animation-play-state: paused;\n  }\n\n  .ticker-track img {\n    height: 40px;\n    width: auto;\n    object-fit: contain;\n    filter: grayscale(100%) brightness(0);\n    opacity: 0.7;\n    flex-shrink: 0;\n    transition: opacity 0.2s ease;\n  }\n\n  .ticker-track img:hover { opacity: 1; }\n\n  @keyframes ticker-scroll {\n    0%   { transform: translateX(0); }\n    100% { transform: translateX(-50%); }\n  }\n\n  @media (max-width: 768px) {\n    .ticker-label { font-size: 10px; padding: 0 24px 0 16px; }\n    .ticker-track { gap: 56px; }\n    .ticker-track img { height: 28px; }\n  }\n</style>\n\n<div class=\"ticker-section\">\n  <div class=\"ticker-label\">USADO POR TOP PERFORMERS EN:</div>\n  <div class=\"ticker-track-wrapper\">\n    <div class=\"ticker-track\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-RAMP_200x_4a32caf0-58dd-48c4-868f-fe4f9bdf7a21.avif?v=1776774950\" alt=\"Ramp\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-JANEST_200x_90190cf5-65ef-425d-8252-fbba6ad1e0f3.avif?v=1776774950\" alt=\"Jane Street\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-ANDURIL_200x_859be024-11a7-438b-b186-f56a509d59c0.avif?v=1776774950\" alt=\"Anduril\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-META_200x_8eadd0d1-64f7-4a9f-85db-efbe78efac38.avif?v=1776774950\" alt=\"Meta\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-SOLANA_200x_28d88bb1-a14d-4d07-b259-311f24760194.webp?v=1776774950\" alt=\"Solana\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-SEQ_200x_4baaaa97-bd3c-4ae0-be27-d8075142030f.avif?v=1776774950\" alt=\"Sequoia\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-OPENAI_200x_59a9525b-ad9a-4397-b4c4-1622e02800da.avif?v=1776774949\" alt=\"OpenAI\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-RAMP_200x_4a32caf0-58dd-48c4-868f-fe4f9bdf7a21.avif?v=1776774950\" alt=\"Ramp\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-JANEST_200x_90190cf5-65ef-425d-8252-fbba6ad1e0f3.avif?v=1776774950\" alt=\"Jane Street\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-ANDURIL_200x_859be024-11a7-438b-b186-f56a509d59c0.avif?v=1776774950\" alt=\"Anduril\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-META_200x_8eadd0d1-64f7-4a9f-85db-efbe78efac38.avif?v=1776774950\" alt=\"Meta\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-SOLANA_200x_28d88bb1-a14d-4d07-b259-311f24760194.webp?v=1776774950\" alt=\"Solana\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-SEQ_200x_4baaaa97-bd3c-4ae0-be27-d8075142030f.avif?v=1776774950\" alt=\"Sequoia\">\n      <img src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/REDO-OPENAI_200x_59a9525b-ad9a-4397-b4c4-1622e02800da.avif?v=1776774949\" alt=\"OpenAI\">\n    </div>\n  </div>\n</div>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
     },
     "custom_liquid_bErLYt": {
       "type": "custom-liquid",
@@ -37,6 +44,10 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "magma-ticker": {
+      "type": "magma-ticker",
+      "settings": {}
     },
     "magma-statement": {
       "type": "magma-statement",
@@ -87,8 +98,9 @@
     "magma-announcement",
     "magma-nav",
     "magma-hero",
-    "magma-ticker",
+    "custom_liquid_TwXX3H",
     "custom_liquid_bErLYt",
+    "magma-ticker",
     "magma-statement",
     "magma-how-it-works",
     "magma-stats",
