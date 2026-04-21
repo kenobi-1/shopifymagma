@@ -70,10 +70,6 @@
         "padding_bottom": 0
       }
     },
-    "magma-statement": {
-      "type": "magma-statement",
-      "settings": {}
-    },
     "magma-how-it-works": {
       "type": "magma-how-it-works",
       "disabled": true,
@@ -124,7 +120,6 @@
     "custom_liquid_bErLYt",
     "magma-ticker",
     "custom_liquid_m7WawQ",
-    "magma-statement",
     "magma-how-it-works",
     "magma-stats",
     "magma-why",
