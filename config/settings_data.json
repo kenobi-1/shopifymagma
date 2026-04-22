@@ -138,12 +138,10 @@
     },
     "content_for_index": [],
     "blocks": {
-      "1530068250781986104": {
-        "type": "shopify://apps/fbp-fast-bundle/blocks/fast_bundle/9e87fbe2-9041-4c23-acf5-322413994cef",
+      "15557474716127144420": {
+        "type": "shopify://apps/kaching-bundles/blocks/app-embed-block/6c637362-a106-4a32-94ac-94dcfd68cdb8",
         "disabled": false,
-        "settings": {
-          "home": false
-        }
+        "settings": {}
       }
     },
     "color_schemes": {
