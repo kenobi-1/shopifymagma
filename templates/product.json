@@ -123,6 +123,30 @@
         "padding_top": 0,
         "padding_bottom": 0
       }
+    },
+    "1776878505128a318b": {
+      "type": "apps",
+      "blocks": {
+        "loox_reviews_loox_dynamic_section_ncmKtp": {
+          "type": "shopify://apps/loox-reviews/blocks/loox-dynamic-section/5c3b337f-fd14-4df5-b1d6-80ec13e6e28e",
+          "settings": {
+            "reviews_to_display": "",
+            "default_tab": "automatic",
+            "only_photos": false,
+            "aggregated": false,
+            "limit": 20,
+            "hide_thumbnails": false,
+            "maxwidth": 1080,
+            "is_sample": true
+          }
+        }
+      },
+      "block_order": [
+        "loox_reviews_loox_dynamic_section_ncmKtp"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
@@ -131,6 +155,7 @@
     "custom_liquid_Tmwbdz",
     "custom_liquid_MxUKnX",
     "custom_liquid_PBDnJT",
-    "custom_liquid_RAQem4"
+    "custom_liquid_RAQem4",
+    "1776878505128a318b"
   ]
 }
