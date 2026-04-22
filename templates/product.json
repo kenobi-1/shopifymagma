@@ -30,10 +30,6 @@
             "text_style": "subtitle"
           }
         },
-        "price": {
-          "type": "price",
-          "settings": {}
-        },
         "variant_picker": {
           "type": "variant_picker",
           "settings": {
@@ -57,7 +53,6 @@
         "vendor",
         "title",
         "caption",
-        "price",
         "variant_picker",
         "buy_buttons",
         "description"
