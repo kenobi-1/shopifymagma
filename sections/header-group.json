@@ -15,7 +15,7 @@
       "type": "header",
       "custom_css": [
         ".header__icon--search {display: none !important;}",
-        "@media screen and (min-width: 990px) {.header {padding-left: 30px !important; }}"
+        "@media screen and (min-width: 990px) {.header {padding-left: 0px !important; }}"
       ],
       "settings": {
         "logo_position": "middle-center",
