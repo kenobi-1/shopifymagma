@@ -16,6 +16,12 @@
           "type": "title",
           "settings": {}
         },
+        "custom_liquid_AVBaXn": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"mtrust-bar\">\n  <div class=\"mtrust-anmat\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/1_1_6439dc60-dfe1-4750-8f7a-4cf52efbc780.png?v=1778729197\"\n      alt=\"Registrado y aprobado ANMAT\"\n      class=\"mtrust-anmat-img\"\n      loading=\"lazy\"\n    >\n  </div>\n\n  <div class=\"mtrust-divider\"></div>\n\n  <div class=\"mtrust-pills\">\n\n    <div class=\"mtrust-pill\">\n      <svg class=\"mtrust-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <path d=\"M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z\"/>\n      </svg>\n      <span>Sin Nicotina</span>\n    </div>\n\n    <div class=\"mtrust-pill\">\n      <svg class=\"mtrust-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <circle cx=\"12\" cy=\"12\" r=\"10\"/>\n        <path d=\"M8 12l2.5 2.5L16 9\"/>\n      </svg>\n      <span>Sin Azúcar</span>\n    </div>\n\n    <div class=\"mtrust-pill\">\n      <svg class=\"mtrust-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <path d=\"M13 2L3 14h9l-1 8 10-12h-9l1-8z\"/>\n      </svg>\n      <span>100mg Cafeína</span>\n    </div>\n\n    <div class=\"mtrust-pill\">\n      <svg class=\"mtrust-icon\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n        <path d=\"M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z\"/>\n        <polyline points=\"9 22 9 12 15 12 15 22\"/>\n      </svg>\n      <span>Hecho en Argentina</span>\n    </div>\n\n  </div>\n</div>\n\n<style>\n  .mtrust-bar {\n    display: flex;\n    align-items: center;\n    gap: 0;\n    border: 1px solid #e4e4e4;\n    border-radius: 10px;\n    overflow: hidden;\n    margin: 4px 0 2px;\n    background: #fafafa;\n  }\n\n  .mtrust-anmat {\n    padding: 10px 14px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-shrink: 0;\n    background: #fff;\n  }\n\n  .mtrust-anmat-img {\n    height: 36px;\n    width: auto;\n    display: block;\n  }\n\n  .mtrust-divider {\n    width: 1px;\n    background: #e4e4e4;\n    align-self: stretch;\n    flex-shrink: 0;\n  }\n\n  .mtrust-pills {\n    display: flex;\n    align-items: center;\n    flex: 1;\n    flex-wrap: wrap;\n    padding: 8px 12px;\n    gap: 6px 10px;\n  }\n\n  .mtrust-pill {\n    display: flex;\n    align-items: center;\n    gap: 5px;\n    font-size: 11px;\n    font-weight: 600;\n    letter-spacing: 0.05em;\n    text-transform: uppercase;\n    color: #0A0A0A;\n    white-space: nowrap;\n  }\n\n  .mtrust-icon {\n    width: 13px;\n    height: 13px;\n    color: #00C9C0;\n    flex-shrink: 0;\n  }\n\n  .mtrust-pill:not(:last-child)::after {\n    content: '';\n    display: inline-block;\n    width: 3px;\n    height: 3px;\n    border-radius: 50%;\n    background: #ccc;\n    margin-left: 10px;\n  }\n\n  @media (max-width: 480px) {\n    .mtrust-bar {\n      flex-direction: column;\n      align-items: stretch;\n    }\n\n    .mtrust-anmat {\n      border-bottom: 1px solid #e4e4e4;\n      padding: 8px 14px;\n      justify-content: flex-start;\n    }\n\n    .mtrust-divider {\n      display: none;\n    }\n\n    .mtrust-pills {\n      padding: 8px 14px;\n      gap: 6px 12px;\n    }\n\n    .mtrust-pill:not(:last-child)::after {\n      display: none;\n    }\n  }\n</style>"
+          }
+        },
         "caption": {
           "type": "text",
           "settings": {
@@ -44,6 +50,7 @@
       },
       "block_order": [
         "title",
+        "custom_liquid_AVBaXn",
         "caption",
         "variant_picker",
         "buy_buttons",
