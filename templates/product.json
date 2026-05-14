@@ -40,7 +40,13 @@
           "type": "buy_buttons",
           "settings": {
             "show_dynamic_checkout": true,
-            "show_gift_card_recipient": true
+            "show_gift_card_recipient": false
+          }
+        },
+        "custom_liquid_n6UzWV": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n  .product-form__buttons button,\n  .product-form button[type=\"submit\"],\n  .shopify-payment-button button {\n    text-align: center !important;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n  }\n</style>"
           }
         },
         "description": {
@@ -54,11 +60,13 @@
         "custom_liquid_EBkRwi",
         "variant_picker",
         "buy_buttons",
+        "custom_liquid_n6UzWV",
         "description"
       ],
       "custom_css": [
         "h1,h2,.product__title {font-weight: 700 !important; text-align: center !important;}",
-        "@media (min-width: 750px) {h1, h2, .product__title {white-space: nowrap !important; font-size: clamp(16px, 2.2vw, 28px) !important; }}"
+        "@media (min-width: 750px) {h1, h2, .product__title {white-space: nowrap !important; font-size: clamp(16px, 2.2vw, 28px) !important; }}",
+        ".shopify-payment-button__button,.shopify-payment-button__button--unbranded,button[name=\"checkout\"],.product-form__submit {text-align: center !important; justify-content: center !important; align-items: center !important; display: flex !important; text-transform: uppercase !important; letter-spacing: 0.08em !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
