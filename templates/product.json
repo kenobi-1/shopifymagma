@@ -37,10 +37,10 @@
             "show_gift_card_recipient": true
           }
         },
-        "custom_liquid_E3Aqtm": {
+        "custom_liquid_EBkRwi": {
           "type": "custom_liquid",
           "settings": {
-            "custom_liquid": ""
+            "custom_liquid": "<button class=\"mpay-btn\" id=\"mpay-checkout-btn\">\n  COMPRAR AHORA\n</button>\n\n<style>\n  .mpay-btn {\n    display: block;\n    width: 100%;\n    background: #0A0A0A;\n    color: #fff;\n    font-size: 14px;\n    font-weight: 700;\n    letter-spacing: 0.12em;\n    text-transform: uppercase;\n    text-align: center;\n    padding: 18px 20px;\n    border-radius: 4px;\n    margin-top: 12px;\n    box-sizing: border-box;\n    border: none;\n    cursor: pointer;\n    transition: background 0.2s;\n    font-family: inherit;\n  }\n  .mpay-btn:hover { background: #222; }\n\n  /* Oculta el botón nativo visualmente pero lo mantiene funcional */\n  .shopify-payment-button {\n    position: absolute !important;\n    opacity: 0 !important;\n    pointer-events: none !important;\n    height: 0 !important;\n    overflow: hidden !important;\n  }\n</style>\n\n<script>\n  (function() {\n    var btn = document.getElementById('mpay-checkout-btn');\n    if (!btn) return;\n\n    btn.addEventListener('click', function() {\n      /* Busca el botón nativo y lo clickea para que dispare todos los eventos */\n      var nativeBtn = document.querySelector('.shopify-payment-button__button--unbranded, .shopify-payment-button__button');\n      if (nativeBtn) {\n        nativeBtn.click();\n        return;\n      }\n\n      /* Fallback si no encuentra el nativo */\n      var variantId = '{{ product.selected_or_first_available_variant.id }}';\n      fetch('/cart/add.js', {\n        method: 'POST',\n        headers: { 'Content-Type': 'application/json' },\n        body: JSON.stringify({ id: variantId, quantity: 1 })\n      }).then(function(r) {\n        if (r.ok) window.location.href = '/checkout';\n      });\n    });\n  })();\n</script>"
           }
         },
         "description": {
@@ -53,7 +53,7 @@
         "caption",
         "variant_picker",
         "buy_buttons",
-        "custom_liquid_E3Aqtm",
+        "custom_liquid_EBkRwi",
         "description"
       ],
       "custom_css": [
