@@ -43,6 +43,12 @@
             "show_gift_card_recipient": false
           }
         },
+        "custom_liquid_qkqaja": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"mpay-trust\">\n  <div class=\"mpay-mp\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/manjo.webp?v=1778783984\"\n      alt=\"MercadoPago\"\n      class=\"mpay-mp-logo\"\n      loading=\"lazy\"\n    >\n    <span>Pago seguro con MercadoPago</span>\n  </div>\n  <div class=\"mpay-icons\">\n    <img\n      src=\"https://cdn.shopify.com/s/files/1/0784/5848/6820/files/Payment_Icons_Product_Page_291f86e7-46a9-4d2d-9848-c5b41ed4d3e8_900x_png.avif?v=1778783983\"\n      alt=\"Medios de pago aceptados\"\n      class=\"mpay-icons-img\"\n      loading=\"lazy\"\n    >\n  </div>\n</div>\n\n<style>\n  .mpay-trust {\n    margin: 8px 0 0;\n    display: flex;\n    flex-direction: column;\n    gap: 10px;\n  }\n  .mpay-mp {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    gap: 10px;\n    background: #f5f5f5;\n    border-radius: 8px;\n    padding: 10px 16px;\n  }\n  .mpay-mp-logo {\n    height: 28px;\n    width: auto;\n    display: block;\n  }\n  .mpay-mp span {\n    font-size: 13px;\n    font-weight: 500;\n    color: #0A0A0A;\n    white-space: nowrap;\n  }\n  .mpay-icons {\n    display: flex;\n    justify-content: center;\n  }\n  .mpay-icons-img {\n    display: block;\n    width: 100%;\n    max-width: 340px;\n    height: auto;\n  }\n</style>"
+          }
+        },
         "custom_liquid_n6UzWV": {
           "type": "custom_liquid",
           "settings": {
@@ -60,6 +66,7 @@
         "custom_liquid_EBkRwi",
         "variant_picker",
         "buy_buttons",
+        "custom_liquid_qkqaja",
         "custom_liquid_n6UzWV",
         "description"
       ],
