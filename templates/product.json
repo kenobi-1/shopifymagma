@@ -57,7 +57,7 @@
         "description"
       ],
       "custom_css": [
-        "h1,h2,.product__title {font-weight: 700 !important; text-align: center !important;}"
+        "h1,h2,.product__title {font-weight: 700 !important; text-align: center !important; white-space: nowrap !important; font-size: clamp(16px, 2.2vw, 28px) !important;}"
       ],
       "settings": {
         "enable_sticky_info": true,
